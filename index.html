@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Ciberpunk | Flerida De Leon</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <title>Flerida De León | Portafolio Cyber-Dev</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --neon-blue: #00f2ff;
-            --neon-pink: #ff00e5;
-            --neon-yellow: #f4ff00;
-            --dark-bg: #050505;
-            --card-bg: #0d0d0d;
+            --bg-dark: #050505;
+            --neon-green: #1900ff;
+            --neon-purple: #e7378f;
+            --text-gray: #a0a0a0;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        /* Modo Claro Override */
-        [data-bs-theme="light"] {
-            --dark-bg: #f8f9fa;
-            --card-bg: #ffffff;
-            color: #000000;
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, .navbar-brand {
@@ -37,56 +29,92 @@
             letter-spacing: 2px;
         }
 
-        /* Estilo Ciberpunk */
-        .neon-text { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); color: var(--neon-blue); }
-        .neon-border { border: 1px solid var(--neon-blue); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
-        
-        /* Navbar */
-        .navbar { background: rgba(0, 0, 0, 0.9) !important; border-bottom: 2px solid var(--neon-blue); }
-        
-        /* Hero Section */
-        #hero { padding: 100px 0; background: linear-gradient(45deg, #050505, #111); }
-        .profile-img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 4px solid var(--neon-pink); box-shadow: 0 0 25px var(--neon-pink); }
+        .neon-text {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
 
-        /* Tarjetas de Proyecto y Experiencia */
-        .card { 
-            background: var(--card-bg); 
-            border: 1px solid #333; 
-            transition: transform 0.3s, border 0.3s;
+        .cyber-border {
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-border:hover {
+            box-shadow: 0 0 25px var(--neon-green);
+            transform: translateY(-5px);
+            border-color: var(--neon-purple);
+        }
+
+        .navbar {
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 2px solid var(--neon-purple);
+        }
+
+        .nav-link { color: white !important; margin: 0 10px; }
+        .nav-link:hover { color: var(--neon-purple) !important; }
+
+        #hero {
+            padding: 100px 0;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop') center/cover;
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 5px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+            object-fit: cover;
             margin-bottom: 20px;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--neon-yellow); }
-        .card-img-top { height: 200px; object-fit: cover; }
 
-        /* Filtros */
-        .filter-btn { margin: 5px; border-radius: 0; font-weight: bold; }
+        .tech-card {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
 
-        /* Footer */
-        footer { border-top: 2px solid var(--neon-blue); padding: 40px 0; background: #000; }
-        .social-icons a { font-size: 2rem; margin: 0 15px; color: var(--neon-blue); transition: 0.3s; }
-        .social-icons a:hover { color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); }
+        .filter-btn {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            margin: 5px;
+        }
 
-        #back-to-top { position: fixed; bottom: 20px; right: 20px; display: none; z-index: 1000; }
+        .filter-btn.active {
+            background: var(--neon-green);
+            color: black;
+        }
+
+        footer { border-top: 1px solid #333; padding: 30px 0; background: #000; }
+
+        #btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: var(--neon-purple);
+            border: none;
+            z-index: 99;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand neon-text" href="#">FLERIDA <small>24-EISN-0-018</small></a>
+            <a class="navbar-brand neon-text" href="#">FLERIDA_DEV <i class="fas fa-terminal"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Bio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
-                    <li class="nav-item">
-                        <button id="themeToggle" class="btn btn-outline-info ms-lg-3">
-                            <i class="fas fa-moon"></i> Modo
-                        </button>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -94,186 +122,82 @@
 
     <section id="hero" class="text-center">
         <div class="container">
-            <img src="https://i.postimg.cc/QCKXKBRY/Whats-App-Image-2026-01-23-at-3-15-55-PM.jpg" alt="Flerida" class="profile-img mb-4">
-            <h1 class="display-4 neon-text mb-3">Flerida De Leon Pinales</h1>
-            <p class="lead text-info">Desarrolladora Frontend | Entusiasta de la Ciberseguridad</p>
-            <p class="mx-auto w-75">Apasionada por crear interfaces futuristas y seguras. Mi enfoque combina la estética visual con la protección de datos en el entorno digital urbano 🌐.</p>
+            <img src="https://github.com/fleridadeleon.png" alt="Flerida De León" class="profile-img">
+            
+            <h1 class="display-4 fw-bold">System.Developer(<span class="neon-text">"Flerida De León"</span>)</h1>
+            <p class="lead text-gray">Ing. De León P. | Software Engineering Student @ O&M</p>
+            <p class="mx-auto" style="max-width: 750px;">
+                Desarrolladora apasionada por la tecnología y el código limpio. Especializada en la creación de interfaces modernas y sistemas funcionales.
+            </p>
+            <div class="mt-4">
+                <a href="https://github.com/fleridadeleon" target="_blank" class="btn btn-outline-light cyber-border px-4 py-2">
+                    <i class="fab fa-github"></i> ACCEDER AL REPOSITORIO
+                </a>
+            </div>
         </div>
     </section>
 
-    <section class="py-5 bg-black">
-        <div class="container text-center">
-            <h2 class="mb-5 text-warning">Tecnologías <i class="fas fa-microchip"></i></h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-2"><div class="card p-3 neon-border"><i class="fab fa-html5 fa-3x text-danger"></i><p class="mt-2">HTML5</p></div></div>
-                <div class="col-6 col-md-2"><div class="card p-3 neon-border"><i class="fab fa-css3-alt fa-3x text-primary"></i><p class="mt-2">CSS3</p></div></div>
-                <div class="col-6 col-md-2"><div class="card p-3 neon-border"><i class="fab fa-bootstrap fa-3x text-purple" style="color:#7952b3"></i><p class="mt-2">Bootstrap</p></div></div>
-                <div class="col-6 col-md-2"><div class="card p-3 neon-border"><i class="fab fa-js fa-3x text-warning"></i><p class="mt-2">JavaScript</p></div></div>
+    <section id="stack" class="py-5 bg-black">
+        <div class="container">
+            <h2 class="text-center mb-5 neon-text">./Tech_Stack</h2>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3"><div class="tech-card cyber-border"><i class="fab fa-html5 fa-3x mb-3 neon-text"></i><h5>HTML/CSS</h5></div></div>
+                <div class="col-6 col-md-3"><div class="tech-card cyber-border"><i class="fas fa-database fa-3x mb-3 neon-text"></i><h5>SQL Server</h5></div></div>
+                <div class="col-6 col-md-3"><div class="tech-card cyber-border"><i class="fab fa-js fa-3x mb-3 neon-text"></i><h5>JavaScript</h5></div></div>
+                <div class="col-6 col-md-3"><div class="tech-card cyber-border"><i class="fab fa-microsoft fa-3x mb-3 neon-text"></i><h5>.NET MAUI</h5></div></div>
             </div>
         </div>
     </section>
 
     <section id="proyectos" class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-4 neon-text">./Proyectos_Destacados</h2>
+            <div class="row g-4" id="projectContainer">
+                <div class="col-md-4">
+                    <div class="card bg-dark cyber-border text-white p-3 h-100">
+                        <i class="fas fa-shopping-cart fa-2x mb-2" style="color:var(--neon-purple)"></i>
+                        <h5>Tienda-online</h5>
+                        <p>Carrito de compras funcional con JavaScript.</p>
+                        <a href="https://github.com/fleridadeleon/Tienda-online" target="_blank" class="btn btn-sm btn-outline-success mt-auto">Ver Repositorio</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark cyber-border text-white p-3 h-100">
+                        <i class="fas fa-paw fa-2x mb-2" style="color:var(--neon-purple)"></i>
+                        <h5>Veterinaria</h5>
+                        <p>Página web profesional para servicios de veterinaria.</p>
+                        <a href="https://github.com/fleridadeleon/VETERINARIA" target="_blank" class="btn btn-sm btn-outline-success mt-auto">Ver Repositorio</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark cyber-border text-white p-3 h-100">
+                        <i class="fas fa-gamepad fa-2x mb-2" style="color:var(--neon-purple)"></i>
+                        <h5>Cyber-Tetris</h5>
+                        <p>Videojuego estilo retro con temática cyberpunk.</p>
+                        <a href="https://github.com/fleridadeleon/portafolio-ciberpunk" target="_blank" class="btn btn-sm btn-outline-success mt-auto">Ver Repositorio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-5">
         <div class="container">
-            <h2 class="text-center mb-5 neon-text">Mis Proyectos 🚀</h2>
-            
-            <div class="text-center mb-4">
-                <button class="btn btn-outline-light filter-btn active" onclick="filterSelection('all')">Todo</button>
-                <button class="btn btn-outline-light filter-btn" onclick="filterSelection('web')">Web</button>
-                <button class="btn btn-outline-light filter-btn" onclick="filterSelection('app')">Apps</button>
-                <button class="btn btn-outline-light filter-btn" onclick="filterSelection('design')">Diseño</button>
+            <div class="mb-4">
+                <a href="https://github.com/fleridadeleon" target="_blank" class="text-white mx-3 fs-2"><i class="fab fa-github"></i></a>
+                <a href="mailto:fleridadeleon012@gmail.com" class="text-white mx-3 fs-2"><i class="fas fa-envelope"></i></a>
             </div>
-
-            <div class="row" id="projectContainer">
-                <div class="col-md-4 project-item web">
-                    <div class="card">
-                        <img src="https://nextbigtechnology.com/wp-content/uploads/2024/11/Payment-Gateway-Integration.jpg" class="card-img-top">
-                        <div class="card-body"><h5>Pasarela Web</h5><p>Integración de pagos seguros.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item web">
-                    <div class="card">
-                        <img src="https://www.sysadminok.es/wp-content/uploads/2022/03/habitos-ciberseguridad-digital.jpg" class="card-img-top">
-                        <div class="card-body"><h5>Portal Ciberseguridad</h5><p>Dashboard de monitoreo.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item web">
-                    <div class="card">
-                        <img src="https://www.gerencia.cl/wp-content/uploads/2023/06/20230613w1.jpg" class="card-img-top">
-                        <div class="card-body"><h5>Gestión Empresarial</h5><p>Sistemas corporativos.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item app">
-                    <div class="card">
-                        <img src="https://tse1.mm.bing.net/th/id/OIP.SURUHHFbo6Qi-2RYIhD0CQHaDJ?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top">
-                        <div class="card-body"><h5>App Mobile</h5><p>Interfaz responsiva táctil.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item app">
-                    <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/tecnologia-global-seguridad-redes-tecnologia-hackeo_1157641-392.jpg" class="card-img-top">
-                        <div class="card-body"><h5>Security App</h5><p>Encriptación de extremo a extremo.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item app">
-                    <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/ciberseguridad-privacidad_1293807-6143.jpg" class="card-img-top">
-                        <div class="card-body"><h5>Privacidad Digital</h5><p>Manejo de identidades.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item design">
-                    <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/sistema-seguridad-red_662214-232153.jpg" class="card-img-top">
-                        <div class="card-body"><h5>UI Networks</h5><p>Diseño de topologías visuales.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item design">
-                    <div class="card">
-                        <img src="https://www.esic.edu/sites/default/files/2022-06/claves-ciberseguridad.jpg" class="card-img-top">
-                        <div class="card-body"><h5>UX Keys</h5><p>Experiencia de usuario segura.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4 project-item design">
-                    <div class="card">
-                        <img src="https://dplnews.com/wp-content/uploads/2023/04/dplnews-ciberseguridad-jb020123-scaled.jpeg" class="card-img-top">
-                        <div class="card-body"><h5>Visual Identity</h5><p>Branding tecnológico.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experiencia" class="py-5 bg-black">
-        <div class="container text-center">
-            <h2 class="mb-5 text-info">Experiencia Laboral 💼</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
-                    <div class="card h-100 neon-border">
-                        <img src="https://cdn.pixabay.com/photo/2020/04/30/15/34/code-5113374_1280.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Dev Junior</h5>
-                            <p>Desarrollo de landing pages interactivas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 neon-border">
-                        <img src="https://img.freepik.com/vector-gratis/fondo-ingenieria-software_1284-3394.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Software Engineer</h5>
-                            <p>Mantenimiento de bases de datos y UI.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 neon-border">
-                        <img src="https://cdn.pixabay.com/photo/2020/09/27/13/15/data-5606639_1280.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Analista QA</h5>
-                            <p>Pruebas de seguridad y rendimiento.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container text-center">
-            <h3 class="neon-text mb-4">Contactame ⚡</h3>
-            <div class="social-icons mb-4">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="text-info">&copy; 2026 Flerida De Leon Pinales | Estudiante de Ingeniería</p>
-            <button id="back-to-top" class="btn btn-warning"><i class="fas fa-arrow-up"></i></button>
+            <p class="text-gray small">&copy; 2026 FLERIDA DE LEÓN | O&M SOFTWARE ENGINEERING</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <button id="btn-back-to-top" class="btn btn-primary rounded-circle"><i class="fas fa-arrow-up"></i></button>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Lógica Modo Dark/Light
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-        
-        themeToggle.addEventListener('click', () => {
-            if (html.getAttribute('data-bs-theme') === 'dark') {
-                html.setAttribute('data-bs-theme', 'light');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo';
-            } else {
-                html.setAttribute('data-bs-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Modo';
-            }
-        });
-
-        // Filtro de Proyectos
-        function filterSelection(c) {
-            let x = document.getElementsByClassName("project-item");
-            if (c == "all") c = "";
-            for (let i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-                if (x[i].className.indexOf(c) > -1) {
-                    x[i].style.display = "block";
-                }
-            }
-        }
-
-        // Botón Volver Arriba
-        window.onscroll = function() {
-            let btn = document.getElementById("back-to-top");
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
-        };
-        
-        document.getElementById("back-to-top").addEventListener('click', () => {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
+        let b = document.getElementById("btn-back-to-top");
+        window.onscroll = () => { b.style.display = (window.scrollY > 100) ? "block" : "none"; };
+        b.onclick = () => { window.scrollTo({top: 0, behavior: 'smooth'}); };
     </script>
 </body>
 </html>
